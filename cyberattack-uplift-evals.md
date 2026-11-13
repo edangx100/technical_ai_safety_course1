@@ -218,28 +218,23 @@ That's why 3CB counts a model as "capable" if it **succeeds even once** under **
 
 ```mermaid
 flowchart LR
-    subgraph Close the elicitation gap
-      A1[Try many prompt formats<br/>and report the BEST]
-      A2[Report pass@k:<br/>success within k tries,<br/>for several k values]
-      A3[Use strong tools,<br/>long time and token budgets]
-      A4[Hire expert red-teamers<br/>to push the model hard]
-      A5[Fine-tune the model<br/>on the task, for an upper bound]
-      A6[Test 'helpful-only' versions<br/>with refusals removed]
+    subgraph G1["① Close the elicitation gap"]
+      direction TB
+      A1["Try many prompt formats,<br/>report the BEST"] ~~~ A2["Report pass@k<br/>(success within k tries)"] ~~~ A3["Strong tools,<br/>big time/token budgets"] ~~~ A4["Expert red-teamers<br/>push the model hard"] ~~~ A5["Fine-tune on the task<br/>for an upper bound"] ~~~ A6["Test 'helpful-only'<br/>versions, no refusals"]
     end
-    subgraph Keep the test honest
-      B1[Secret held-out tasks<br/>to catch memorised answers]
-      B2[Keep making fresh tasks<br/>after the model's training cutoff]
+    subgraph G2["② Keep the test honest"]
+      direction TB
+      B1["Secret held-out tasks<br/>catch memorised answers"] ~~~ B2["Fresh tasks made after<br/>the training cutoff"]
     end
-    subgraph Measure what matters
-      C1[Partial credit for<br/>milestones, not just yes/no]
-      C2[More end-to-end<br/>cyber ranges]
-      C3[Human uplift studies:<br/>novices with vs. without AI]
-      C4[Measure cost and time,<br/>not just success]
+    subgraph G3["③ Measure what matters"]
+      direction TB
+      C1["Partial credit<br/>for milestones"] ~~~ C2["More end-to-end<br/>cyber ranges"] ~~~ C3["Human uplift studies:<br/>novice with vs without AI"] ~~~ C4["Track cost and time,<br/>not just success"]
     end
-    subgraph Better statistics
-      D1[More tasks and more runs,<br/>so one result can't swing the score]
-      D2[Error bars and<br/>confidence intervals]
+    subgraph G4["④ Better statistics"]
+      direction TB
+      D1["More tasks and runs,<br/>so one result can't swing it"] ~~~ D2["Error bars and<br/>confidence intervals"]
     end
+    G1 ~~~ G2 ~~~ G3 ~~~ G4
 ```
 
 | Patch | What problem it fixes | Seen in readings? |
